@@ -1,9 +1,9 @@
 #helloworld.py
 
 """
-Title: Hello world program
+Title: Hello World Program
 Author: Jenna Tran
-Date created: 2023-02-07
+Date Created: 2023-02-07
 
 
 #this is a print function
