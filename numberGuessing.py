@@ -31,4 +31,4 @@ while True:
             print("Did not insert valid option.")
         pass
     except:
-        print("rip")
+        print("Invalid input.")
