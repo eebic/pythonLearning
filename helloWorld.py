@@ -72,7 +72,7 @@ while True:
         userinput1 = int(userinput)
         userinput = input("please insert your second number:")
         userinput2 = int(userinput)
-        userinput = input("would you like to add or subtract the numbers? +/-")
+        userinput = input("what would you like to do? + - /")
         if userinput == "+":
             print("the sum of your numbers is equal to:", userinput1+userinput2)
             tryagain = input("would you like to calculate again? y/n")
@@ -85,6 +85,16 @@ while True:
                 pass
         elif userinput == "-":
             print("the difference of your numbers is equal to:", userinput1-userinput2)
+            tryagain = input("would you like to calculate again? y/n")
+            if tryagain == "y":
+                pass
+            elif tryagain == "n":
+                break
+            else:
+                print("did not insert valid option, restarting program.")
+                pass
+        elif userinput == "/":
+            print("the quotient of yout numbers is equal to:", userinput1/userinput2)
             tryagain = input("would you like to calculate again? y/n")
             if tryagain == "y":
                 pass
