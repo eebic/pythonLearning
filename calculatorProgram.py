@@ -33,7 +33,6 @@ def operationChoice():
     if choice > 0 and choice < 5:
         return choice
     else:
-        print("Sorry, please choose a valid number")
         return operationChoice()
             
 
