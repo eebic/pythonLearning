@@ -114,8 +114,6 @@ def sit2(hs, tp):
     return answer
 
 
-    
-    
 
 #---OUTPUT---#
 
@@ -123,7 +121,7 @@ def showAnswer(answer):
     """
     This function will show the answer.
     """
-    print("The total distance the cannonball traveled is:", answer)
+    print("The total distance the cannonball traveled is: ", answer)
 
 #---MAIN PROGRAM CODE---#
 while True:
