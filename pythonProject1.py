@@ -4,29 +4,30 @@
 Title: Python Project
 Author: Jenna Tran
 Date Created: 2023-02-09
+Date Finished: 2023-02-011
 """
 
 import math
 
 #---INPUT---#
 
-print("""
-Welcome to the Navy canon distance calculator. Find the distance a cannonball will travel given canon scenario:
-    
-
-    1. Horizontal to the water.
-
-    2. Parabolic to a level boat.
-
-    3. Parabolic to a smaller ship; too far for horizontal shot.
-    
-    """)
+def chooseSit():
+    """
+    This function will determine which scenario to analyze.
+    """
+    choice = input("Choose canon scenario: ")
+    choice = int(choice)
+    if choice > 0 and choice < 5:
+        return choice
+    else:
+        print("Please choose a valid scenario.")
+        return chooseSit()
 
 def getSpeed():
     """
     This function will retreive a speed from the user.
     """
-    userinput1 = input("Insert speed: ")
+    userinput1 = input("Insert speed (m/s): ")
     userinput1 = float(userinput1)
     if userinput1 == False:
         return getSpeed()
@@ -37,7 +38,7 @@ def getHeight():
     """
     This function will retreive a speed from the user.
     """
-    userinput2 = input("Insert height: ")
+    userinput2 = input("Insert height (ft): ")
     userinput2 = float(userinput2)
     if userinput2 == False:
         return getHeight()
@@ -48,24 +49,27 @@ def getAngle():
     """
     This function will retrieve an angle from the user.
     """
-    userinput3 = input("Insert angle: ")
+    userinput3 = input("Insert angle (degrees): ")
     userinput3 = float(userinput3)
     if userinput3 == False:
         return getAngle()
     else:
         return userinput3
-
-def chooseSit():
+    
+def calcAgain():
     """
-    This function will determine which scenario to analyze.
+    This function asks if the user wants to calculate again
     """
-    choice = input("Choose canon scenario: ")
-    choice = int(choice)
-    if choice > 0 and choice < 3:
-        return choice
+    tryagain = input("Would you like to calculate again? y/n ")
+    if tryagain == "y":
+        return True
+    elif tryagain == "n":
+        print("Thank you for using this calculator!")
+        tryagain == False
+        return False
     else:
-        print("Please choose a valid scenario.")
-        return chooseSit()
+        print("Please insert valid option.")
+        return calcAgain
 
 #---PROCESSING---#
 
@@ -90,6 +94,27 @@ def timePeak(vs):
     tp = vs / 9.81
     return tp
 
+def totTime(tim, tp):
+    """
+    This function calculates total time in scenario 3.
+    """
+    tt = tim + tp
+    return tt
+
+def disPeak(vs):
+    """
+    This funtion will calculate the maximum/peak height of the cannonball from scenario 3.
+    """
+    dp = ((vs) ** 2)/ (2 * 9.81)
+    return dp
+
+def totHeight(dp):
+    """
+    cmax height of cannonball + 15 = total height
+    """
+    th = dp + 15
+    return th
+
 def cos(rad):
     coss = math.cos(rad)
     return coss
@@ -112,7 +137,7 @@ def vertSpeed(userinput1, sins):
     vs = userinput1 * sins
     return vs
 
-def sit1(userinput1, tim):
+def sit1n3(userinput1, tim):
     """
     This function will calculate distance from scenario 1.
     """
@@ -128,13 +153,6 @@ def sit2(hs, tp):
     answer = hs * (2 * tp)
     return answer
 
-def sit3():
-    """
-    This function will calculate distance from scenario 3.
-    """
-
-
-
 #---OUTPUT---#
 
 def showAnswer(answer):
@@ -145,13 +163,29 @@ def showAnswer(answer):
 
 #---MAIN PROGRAM CODE---#
 
-while True:
+tryagain = True
+
+while tryagain == True:
+    
+    print("""
+Welcome to the Navy canon distance calculator. Find the distance a cannonball will travel given canon scenario:
+    
+
+    1. Horizontal to the water.
+
+    2. Parabolic to a level boat.
+
+    3. Parabolic to a smaller ship; too far for horizontal shot.
+    
+    """) 
+    
     choice = chooseSit() 
     if choice == 1:
         userinput1 = getSpeed()
         userinput2 = getHeight()
         tim = time(userinput2)
-        answer = sit1(userinput1, tim)
+        answer = sit1n3(userinput1, tim)
+        showAnswer(answer)
     if choice == 2:
         userinput1 = getSpeed()
         userinput3 = getAngle()
@@ -162,10 +196,24 @@ while True:
         hs = hortSpeed(coss, userinput1)
         tp = timePeak(vs)
         answer = sit2(hs, tp)
-    showAnswer(answer)
+        showAnswer(answer)
     if choice == 3:
         userinput1 = getSpeed()
         userinput2 = getHeight()
         userinput3 = getAngle()
+        rad = A2R(userinput3)
+        sins = sin(rad)
+        vs = vertSpeed(sins, userinput1)
+        coss = cos(rad)
+        hs = hortSpeed(coss, userinput1)
+        tp = timePeak(vs)
+        dp = disPeak(vs)
+        th = totHeight(dp)
+        tim = time(th)
+        tt = totTime(tim, tp)
+        answer = sit1n3(hs, tt)
+        showAnswer(answer)
+        
+    tryagain = calcAgain()
 
     
