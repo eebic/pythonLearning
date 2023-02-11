@@ -26,34 +26,34 @@ def getSpeed():
     """
     This function will retreive a speed from the user.
     """
-    userinput = input("Insert speed: ")
-    userinput = float(userinput)
-    if userinput == False:
+    userinput1 = input("Insert speed: ")
+    userinput1 = float(userinput1)
+    if userinput1 == False:
         return getSpeed()
     else:
-        return userinput
+        return userinput1
 
 def getHeight():
     """
     This function will retreive a speed from the user.
     """
-    userinput = input("Insert height: ")
-    userinput = float(userinput)
-    if userinput == False:
+    userinput2 = input("Insert height: ")
+    userinput2 = float(userinput2)
+    if userinput2 == False:
         return getHeight()
     else:
-        return userinput
+        return userinput2
     
 def getAngle():
     """
     This function will retrieve an angle from the user.
     """
-    userinput = input("Insert angle: ")
-    userinput = float(userinput)
-    if userinput == False:
+    userinput3 = input("Insert angle: ")
+    userinput3 = float(userinput3)
+    if userinput3 == False:
         return getAngle()
     else:
-        return userinput
+        return userinput3
 
 def chooseSit():
     """
@@ -69,6 +69,13 @@ def chooseSit():
 
 #---PROCESSING---#
 
+def A2R(userinput3):
+    """
+    This function will change angle to radian.
+    """
+    rad = math.radians(userinput3)
+    return rad
+    
 def time(userinput2):
     """
     This function will calculate time given height.
@@ -83,18 +90,26 @@ def timePeak(vs):
     tp = vs / 9.81
     return tp
 
-def hortSpeed(userinput1):
+def cos(rad):
+    coss = math.cos(rad)
+    return coss
+
+def hortSpeed(userinput1, coss):
     """
     This function will calculate the horizontal speed.
     """
-    hs = math.cos(userinput3) * userinput1
+    hs = userinput1 * coss
     return hs
 
-def vertSpeed(userinput1):
+def sin(rad):
+    sins = math.sin(rad)
+    return sins
+
+def vertSpeed(userinput1, sins):
     """
     This function will calculate the vertical speed.
     """
-    vs = math.sin(userinput3) * userinput1
+    vs = userinput1 * sins
     return vs
 
 def sit1(userinput1, tim):
@@ -113,6 +128,13 @@ def sit2(hs, tp):
     answer = hs * (2 * tp)
     return answer
 
+def sit3():
+    """
+    This function will calculate distance from scenario 3.
+    """
+    answer = 
+    return answer
+
 
 
 #---OUTPUT---#
@@ -126,20 +148,26 @@ def showAnswer(answer):
 #---MAIN PROGRAM CODE---#
 
 while True:
-    choice = chooseSit()
-    userinput1 = getSpeed() 
+    choice = chooseSit() 
     if choice == 1:
+        userinput1 = getSpeed()
         userinput2 = getHeight()
         tim = time(userinput2)
         answer = sit1(userinput1, tim)
     if choice == 2:
+        userinput1 = getSpeed()
         userinput3 = getAngle()
-        vs = vertSpeed(userinput1)
+        rad = A2R(userinput3)
+        sins = sin(rad)
+        vs = vertSpeed(sins, userinput1)
+        coss = cos(rad)
+        hs = hortSpeed(coss, userinput1)
         tp = timePeak(vs)
-        hs = hortSpeed(userinput1)
         answer = sit2(hs, tp)
     showAnswer(answer)
     if choice == 3:
+        userinput1 = getSpeed()
         userinput2 = getHeight()
         userinput3 = getAngle()
+
     
