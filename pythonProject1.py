@@ -132,8 +132,6 @@ def sit3():
     """
     This function will calculate distance from scenario 3.
     """
-    answer = 
-    return answer
 
 
 
