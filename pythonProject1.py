@@ -124,6 +124,7 @@ def showAnswer(answer):
     print("The total distance the cannonball traveled is: ", answer)
 
 #---MAIN PROGRAM CODE---#
+
 while True:
     choice = chooseSit()
     userinput1 = getSpeed() 
