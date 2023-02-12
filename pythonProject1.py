@@ -240,5 +240,5 @@ Welcome to the Navy canon distance calculator. Find the distance a cannonball wi
             print("Impossible scenario.")
         
     tryagain = calcAgain()
-
+    
     
