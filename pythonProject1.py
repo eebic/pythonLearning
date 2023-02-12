@@ -228,10 +228,10 @@ Welcome to the Navy canon distance calculator. Find the distance a cannonball wi
         tp = timePeak(vs)
         dp = disPeak(vs)
         heightBetween = dp - userinput2
-        if heightBetween > 0 or heightBetween == 0:
+        if heightBetween < 0 or heightBetween == 0:
             answer = hs * tp
             showAnswer(answer)
-        elif heightBetween < 0:
+        elif heightBetween > 0:
             tim = time(heightBetween)
             tt = totTime(tim, tp)
             answer = sit1n3(hs, tt)
