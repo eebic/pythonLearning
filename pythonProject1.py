@@ -168,6 +168,7 @@ tryagain = True
 while tryagain == True:
     
     print("""
+
 Welcome to the Navy canon distance calculator. Find the distance a cannonball will travel given canon scenario:
     
 
@@ -176,6 +177,8 @@ Welcome to the Navy canon distance calculator. Find the distance a cannonball wi
     2. Parabolic to a level boat.
 
     3. Parabolic to a smaller ship; too far for horizontal shot.
+    
+    4. Parabolic to a larger ship.
     
     """) 
     
@@ -213,6 +216,28 @@ Welcome to the Navy canon distance calculator. Find the distance a cannonball wi
         tt = totTime(tim, tp)
         answer = sit1n3(hs, tt)
         showAnswer(answer)
+    if choice == 4:
+        userinput1 = getSpeed()
+        userinput2 = getHeight()
+        userinput3 = getAngle()
+        rad = A2R(userinput3)
+        sins = sin(rad)
+        vs = vertSpeed(sins, userinput1)
+        coss = cos(rad)
+        hs = hortSpeed(coss, userinput1)
+        tp = timePeak(vs)
+        dp = disPeak(vs)
+        heightBetween = dp - userinput2
+        if heightBetween > 0 or heightBetween == 0:
+            answer = hs * tp
+            showAnswer(answer)
+        elif heightBetween < 0:
+            tim = time(heightBetween)
+            tt = totTime(tim, tp)
+            answer = sit1n3(hs, tt)
+            showAnswer(answer)
+        else:
+            print("Impossible scenario.")
         
     tryagain = calcAgain()
 
